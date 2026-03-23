@@ -1,0 +1,198 @@
+.analysis-screen {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 0 16px 32px;
+  min-height: 100dvh;
+}
+
+/* Header */
+.analysis-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 0;
+  position: sticky;
+  top: 0;
+  background: var(--cream-white);
+  z-index: 10;
+}
+
+.back-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--soil-brown);
+  flex-shrink: 0;
+}
+
+.back-btn:hover {
+  background: var(--egg-cream);
+}
+
+.analysis-header h1 {
+  font-size: 1.3rem;
+}
+
+/* Photo Card */
+.analysis-photo-card {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  margin-bottom: 20px;
+}
+
+.analysis-photo {
+  width: 100%;
+  max-height: 280px;
+  object-fit: cover;
+}
+
+/* Plant ID Card */
+.plant-id-card {
+  background: var(--egg-cream);
+  border-radius: var(--radius-md);
+  padding: 18px;
+  margin-bottom: 16px;
+  box-shadow: var(--shadow-sm);
+}
+
+.plant-species-name {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  color: var(--soil-brown);
+  margin-bottom: 8px;
+}
+
+.confidence-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.plant-analysis-text {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--soil-brown);
+}
+
+/* Info sections */
+.analysis-section {
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-sm);
+}
+
+.analysis-section h3 {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 8px;
+  color: var(--soil-brown);
+}
+
+.analysis-section p {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--soil-brown);
+}
+
+.section-health {
+  background: rgba(200, 146, 42, 0.1);
+  border-left: 3px solid var(--harvest-gold);
+}
+
+.section-health.healthy {
+  background: rgba(74, 124, 63, 0.08);
+  border-left-color: var(--pasture-green);
+}
+
+.section-structure {
+  background: var(--egg-cream);
+}
+
+.section-timing {
+  background: var(--egg-cream);
+}
+
+/* Goals */
+.goals-heading {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  color: var(--soil-brown);
+  margin: 24px 0 14px;
+}
+
+.goal-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 16px;
+  background: var(--egg-cream);
+  border-radius: var(--radius-md);
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  border: 2px solid transparent;
+}
+
+.goal-card:active {
+  transform: scale(0.98);
+}
+
+.goal-card:hover {
+  border-color: var(--barn-red);
+  box-shadow: var(--shadow-md);
+}
+
+.goal-icon {
+  flex-shrink: 0;
+}
+
+.goal-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.goal-name {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--soil-brown);
+  margin-bottom: 4px;
+}
+
+.goal-description {
+  font-size: 0.85rem;
+  line-height: 1.45;
+  color: var(--soil-brown);
+  margin-bottom: 8px;
+}
+
+.goal-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.goal-timing {
+  font-size: 0.78rem;
+  color: rgba(92, 61, 46, 0.6);
+  font-style: italic;
+}
+
+.goal-arrow {
+  margin-left: auto;
+  color: rgba(92, 61, 46, 0.3);
+  flex-shrink: 0;
+  align-self: center;
+}
