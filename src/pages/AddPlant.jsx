@@ -19,6 +19,7 @@ export default function AddPlant() {
   const canvasRef = useRef(null)
   const streamRef = useRef(null)
   const fileInputRef = useRef(null)
+  const cameraInputRef = useRef(null)
   const navigate = useNavigate()
 
   const openCamera = useCallback(async () => {
@@ -179,7 +180,7 @@ export default function AddPlant() {
       {step === 'capture' && (
         <div className="capture-section">
           <div className="capture-actions">
-            <button className="camera-btn" onClick={openCamera} aria-label="Open camera">
+            <button className="camera-btn" onClick={() => cameraInputRef.current?.click()} aria-label="Open camera">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z" />
                 <circle cx="12" cy="13" r="3" />
@@ -196,6 +197,7 @@ export default function AddPlant() {
             </button>
             <p className="tip-text">Get the whole plant in frame</p>
           </div>
+          <input ref={cameraInputRef} type="file" accept="image/*" capture="environment" className="hidden-input" onChange={handleFileChange} />
           <input ref={fileInputRef} type="file" accept="image/*" className="hidden-input" onChange={handleFileChange} />
         </div>
       )}
