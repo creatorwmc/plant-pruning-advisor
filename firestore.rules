@@ -1,0 +1,47 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isAuth() {
+      return request.auth != null;
+    }
+
+    function isOwner(ownerId) {
+      return isAuth() && request.auth.uid == ownerId;
+    }
+
+    // v1 household shortcut — same hardcoded list as Starbound/RR.
+    // Replace with a households collection lookup when the pattern matures.
+    function isHouseholdMember() {
+      return isAuth()
+        && request.auth.token.email_verified == true
+        && request.auth.token.email in [
+          'zacharyrpaige@gmail.com',
+          'staceycpaige@gmail.com'
+        ];
+    }
+
+    function canReadShared(resource) {
+      return resource.data.scope == 'household' && isHouseholdMember();
+    }
+
+    // Global species cache — anyone authenticated can read, only admin SDK writes.
+    match /species_info/{slug} {
+      allow read: if isAuth();
+      allow write: if false;
+    }
+
+    match /plants/{plantId} {
+      allow read: if isOwner(resource.data.ownerId) || canReadShared(resource);
+      allow create: if isAuth() && request.resource.data.ownerId == request.auth.uid;
+      allow update, delete: if isOwner(resource.data.ownerId);
+    }
+
+    match /pruning_sessions/{sessionId} {
+      allow read: if isOwner(resource.data.ownerId) || canReadShared(resource);
+      allow create: if isAuth() && request.resource.data.ownerId == request.auth.uid;
+      allow update, delete: if isOwner(resource.data.ownerId);
+    }
+  }
+}

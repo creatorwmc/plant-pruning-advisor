@@ -1,0 +1,113 @@
+.home-page {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 0 16px 32px;
+  min-height: 100dvh;
+}
+
+.home-page-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 20px 0 16px;
+}
+
+.home-page-icon {
+  width: 36px;
+  height: 36px;
+  color: var(--pasture-green);
+}
+
+.home-page-header h1 {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  color: var(--soil-brown);
+}
+
+.add-plant-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px;
+  background: var(--barn-red);
+  color: #fff;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  font-size: 1rem;
+  box-shadow: var(--shadow-warm);
+  margin-bottom: 24px;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 40px 16px;
+  color: rgba(92, 61, 46, 0.5);
+  font-size: 0.95rem;
+  background: var(--egg-cream);
+  border-radius: var(--radius-md);
+}
+
+.plant-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.plant-card {
+  background: var(--egg-cream);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.plant-card:active {
+  transform: scale(0.97);
+  box-shadow: var(--shadow-md);
+}
+
+.plant-card-photo {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+.plant-card-placeholder {
+  width: 100%;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(74, 124, 63, 0.08);
+  color: var(--pasture-green);
+}
+
+.plant-card-info {
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.plant-card-name {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--soil-brown);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.plant-card-species {
+  font-size: 0.75rem;
+  color: rgba(92, 61, 46, 0.6);
+  font-style: italic;
+  text-transform: capitalize;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

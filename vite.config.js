@@ -8,9 +8,9 @@ export default defineConfig({
     VitePWA({
       registerType: 'autoUpdate',
       manifest: {
-        name: 'Plant Pruning Advisor',
-        short_name: 'PruneAdvisor',
-        description: 'AI-powered plant pruning guidance',
+        name: 'Plants 101',
+        short_name: 'Plants101',
+        description: 'Houseplant care, identification, and herbalism',
         theme_color: '#8B2E1E',
         background_color: '#FAF6EE',
         display: 'standalone',
@@ -25,5 +25,11 @@ export default defineConfig({
   server: {
     port: 5154,
     strictPort: true,
+    proxy: {
+      '/.netlify/functions': {
+        target: 'http://localhost:9154',
+        changeOrigin: true,
+      },
+    },
   },
 })

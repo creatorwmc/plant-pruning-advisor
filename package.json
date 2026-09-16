@@ -1,16 +1,20 @@
 {
-  "name": "plant-pruning-advisor",
+  "name": "plants-101",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "dev:functions": "NODE_OPTIONS=--experimental-require-module netlify dev",
+    "dev:full": "concurrently \"npm run dev\" \"npm run dev:functions\"",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
   "dependencies": {
-    "idb": "^8.0.3",
+    "@anthropic-ai/sdk": "^0.125.0",
+    "firebase": "^12.19.0",
+    "firebase-admin": "^14.4.0",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "react-router-dom": "^7.13.1"

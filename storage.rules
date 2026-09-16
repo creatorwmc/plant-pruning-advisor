@@ -1,0 +1,25 @@
+rules_version = '2';
+
+service firebase.storage {
+  match /b/{bucket}/o {
+
+    // v1 household shortcut — mirrors the Firestore rules list.
+    function isHouseholdMember() {
+      return request.auth != null
+        && request.auth.token.email_verified == true
+        && request.auth.token.email in [
+          'zacharyrpaige@gmail.com',
+          'staceycpaige@gmail.com'
+        ];
+    }
+
+    match /plants/{uid}/{file} {
+      // Owner can read and write their own photos.
+      allow read, write: if request.auth != null && request.auth.uid == uid;
+
+      // Household members can read any member's plant photos,
+      // so household-scoped plants don't 403 on the image.
+      allow read: if isHouseholdMember();
+    }
+  }
+}

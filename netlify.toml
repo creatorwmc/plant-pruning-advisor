@@ -1,6 +1,17 @@
 [build]
   command = "npm run build"
   publish = "dist"
+  functions = "netlify/functions"
+
+[functions]
+  included_files = [".service-accounts/*.json"]
+
+[dev]
+  framework = "#custom"
+  command = "node dev-keepalive.cjs"
+  targetPort = 59999
+  port = 9154
+  autoLaunch = false
 
 [[redirects]]
   from = "/*"
